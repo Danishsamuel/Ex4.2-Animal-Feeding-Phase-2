@@ -99,6 +99,7 @@ public class DetectCollider : MonoBehaviour
 ```
 
 ## OUTPUT:
+
 <img width="1598" height="747" alt="image" src="https://github.com/user-attachments/assets/15df3289-3561-4921-8192-1d9da22bc389" />
 
 ## RESULT:
