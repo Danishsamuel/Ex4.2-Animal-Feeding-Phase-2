@@ -33,53 +33,43 @@ For all the animal prefabs and food in th inspector (below the layer ) drop down
 
 ## PROGRAM:
 
-
-### SPAWN MANAGER:
-
-```C#
-using System.Collections;
-using System.Collections.Generic;
+## SPAWN MANAGER:
+```
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class spawnManager : MonoBehaviour
 {
-    public GameObject[] animalPrefabs;
-    private float spawnRangeX = 1;
-    private float spawnPosZ = 1;
-    private float startDelay = 2f;
-    private float spawnInterval = 1.5f;
-
+    public GameObject[] animalPrefab;
+    public float spawnRangeX = 10;
+    public float spawnPosZ = -8;
+    public float startDelay = 2;
+    public float spawnInterval = 1.5f;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
+        InvokeRepeating("SpawnAnimal", startDelay, spawnInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-    void SpawnRandomAnimal()
+    void SpawnAnimal()
     {
-        int animalIndex = Random.Range(0, animalPrefabs.Length);
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
-        Instantiate(animalPrefabs[animalIndex], spawnPos, animalPrefabs[animalIndex].transform.rotation);
+       int animalIndex = Random.Range(0, animalPrefab.Length);
+       Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX,spawnRangeX), 0, spawnPosZ);
+       Instantiate(animalPrefab[animalIndex], spawnPos, animalPrefab[animalIndex].transform.rotation);
     }
 }
-
 ```
-
-### DETECT COLLIDER:
-
-```C#
-using System.Collections;
-using System.Collections.Generic;
+## DETECT COLLIDER:
+```
 using UnityEngine;
 
-public class DetectCollider : MonoBehaviour
+public class collision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
@@ -90,24 +80,19 @@ public class DetectCollider : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
-        Destroy(other);
+        Destroy(gameObject);
         Destroy(other.gameObject);
     }
 }
-```
 
+```
 ## OUTPUT:
 
+<img width="1918" height="1136" alt="Screenshot 2025-10-04 093018" src="https://github.com/user-attachments/assets/b1f881a8-4f2d-4e93-b772-be930e4459e8" />
 
-
-<img width="1598" height="747" alt="image" src="https://github.com/user-attachments/assets/15df3289-3561-4921-8192-1d9da22bc389" />
 
 ## RESULT:
 Animal feeding game-Phase-2 using unity is developed successfully.
-
-
-
-
-
